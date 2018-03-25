@@ -1,10 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>We love Animals</title>
+    <style>
+        body{
+            text-align: center;
+            background: #888888;
+            padding-left: 5px;
+            padding-right: 5px;
+            font-family: Ebrima;
+        }
+        .container{
+            margin: auto;
+            background: #fff;
+            padding: 10px;
+            display: flex;
+            flex-direction: row;
+            border-radius: 7px;
+            text-align: left;
+        }
+        .animal{
+            margin: 15px;
+            padding: 15px;
+            background: aqua;
+            border-radius: 10px;
+            box-shadow: 5px 8px 5px #888888;
+            flex-grow: 1;
+        }
+
+    </style>
 </head>
 <body>
-    <h1>You are good</h1>
+    <h1>Animals</h1>
+    <div class="container">
+        <div class="animal">
+            <h3 th:text="${word}">default</h3>
+            <p th:text="${wordd}"></p>
+        </div>
+        <div class="animal">
+            <h3 th:text="${animalName2}">default</h3>
+            <p th:text="${animalDescription2}"></p>
+        </div>
+    </div>
 </body>
 </html>

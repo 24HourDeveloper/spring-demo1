@@ -27,7 +27,7 @@
             background: aqua;
             border-radius: 10px;
             box-shadow: 5px 8px 5px #888888;
-            flex-grow: 1;
+            flex: 1 200px;
         }
 
     </style>
@@ -36,8 +36,8 @@
     <h1>Animals</h1>
     <div class="container">
         <div class="animal" th:each="animal : ${word}">
-            <h3 th:text="${animal}">default</h3>
-
+            <h3 th:text="${animal.getName()}">default</h3>
+            <p th:text="${animal.getDescription()}">default</p>
         </div>
     </div>
 </body>

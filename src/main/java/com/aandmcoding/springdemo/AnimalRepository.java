@@ -12,7 +12,8 @@ public class AnimalRepository {
         new Animal("Ant", "Has for legs"),
         new Animal("Dog", "Has black long hair and great sense of smell"),
         new Animal("Rhino", "They have big horns and love to charge."),
-        new Animal("Pig", "They have pig skin and make snort noise all day.")
+        new Animal("Pig", "They have pig skin and make snort noise all day."),
+            new Animal("Wolf", "Is a huge dog that runs with a pack.")
     );
 
     public Animal getAnimal(){

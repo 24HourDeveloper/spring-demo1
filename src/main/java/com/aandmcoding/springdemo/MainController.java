@@ -1,10 +1,12 @@
 package com.aandmcoding.springdemo;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import com.aandmcoding.springdemo.AnimalController;
 
 @Controller
 public class MainController {
@@ -34,26 +36,17 @@ public class MainController {
     and a different aniaml and description each time
 
      */
-    private Animal[] animals = {new Animal("Ant", "Has four legs"),
-            new Animal("dog", "Like to wag its tail"),
-            new Animal("cat", "like to chase after mice"),
-            new Animal("bird", "like to to fly"),
-            new Animal("cow", "like to eat grass")};
+
+    @Autowired
+    private AnimalRepository animalRepository;
 
     @RequestMapping("/{name}")
     public String getAnimal(@PathVariable String name, Model model){
 
-        String animal = null;
-        String desc = null;
-        for(Animal a: animals){
-            if (a.getName().equalsIgnoreCase(name)){
-                animal = a.getName();
-                desc = a.getDescription();
-                model.addAttribute("name", name);
-                model.addAttribute("desc", desc);
-                return "animals";
-            }
-        }
-        return null;
+        AnimalController m = animalRepository.findByName(name);
+        model.addAttribute("name", m.getName());
+        model.addAttribute("desc", m.getDescription());
+        return "animals";
+
     }
 }

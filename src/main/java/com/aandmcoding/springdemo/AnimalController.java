@@ -11,10 +11,8 @@ import javax.persistence.Id;
 
 @Entity
 public class AnimalController {
-
     @Id @GeneratedValue
     private long id;
-
     @Column
     private String name;
     @Column

@@ -6,7 +6,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import com.aandmcoding.springdemo.AnimalController;
 
 @Controller
 public class MainController {
@@ -28,22 +27,17 @@ public class MainController {
         return "index";
     }
 
-
     /*
-    code added by alfred
-
+    ***code added by alfred***
     this should allow you to enter a different name in the url
-    and a different aniaml and description each time
-
+    and get a different animal and description each time
      */
-
     @Autowired
-    private AnimalRepository animalRepository;
+    private AmRepository amRepository;
 
     @RequestMapping("/{name}")
     public String getAnimal(@PathVariable String name, Model model){
-
-        AnimalController m = animalRepository.findByName(name);
+        AnimalController m = amRepository.findByName(name);
         model.addAttribute("name", m.getName());
         model.addAttribute("desc", m.getDescription());
         return "animals";

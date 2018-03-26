@@ -12,15 +12,15 @@ public class SpringDemoApplication {
 		SpringApplication.run(SpringDemoApplication.class, args);
 	}
 
+	//setup initial values in the database at runtime
 	@Bean
-	CommandLineRunner runner(AnimalRepository animalRepository){
+	CommandLineRunner runner(AmRepository amRepository){
 		return args -> {
-
-			animalRepository.save(new AnimalController("ant", "Has four legs"));
-			animalRepository.save(new AnimalController("dog", "Like to wag its tail"));
-			animalRepository.save(new AnimalController("cat", "like to chase after mice"));
-			animalRepository.save(new AnimalController("bird", "like to to fly"));
-			animalRepository.save(new AnimalController("cow", "like to eat grass"));
+			amRepository.save(new AnimalController("ant", "Has four legs"));
+			amRepository.save(new AnimalController("dog", "Like to wag its tail"));
+			amRepository.save(new AnimalController("cat", "like to chase after mice"));
+			amRepository.save(new AnimalController("bird", "like to to fly"));
+			amRepository.save(new AnimalController("cow", "like to eat grass"));
 		};
 	}
 }

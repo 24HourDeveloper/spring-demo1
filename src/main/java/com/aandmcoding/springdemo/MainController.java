@@ -51,7 +51,7 @@ public class MainController {
                 desc = a.getDescription();
                 model.addAttribute("name", name);
                 model.addAttribute("desc", desc);
-                return "index";
+                return "animals";
             }
         }
         return null;

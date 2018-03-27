@@ -7,41 +7,25 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 @Controller
 public class MainController {
-
     @Autowired
-    private  AnimalRepository animalRepository;
+    private AmRepository amRepository;
 
     @RequestMapping("/")
     public String getWord(Model model){
-        model.addAttribute("word", animalRepository.allAnimals());
+        model.addAttribute("word", new ArrayList<AnimalController>((Collection<? extends AnimalController>) amRepository.findAll()));
         return "index";
     }
 
     @RequestMapping("/animal/{name}")
     public String getAnimal(@PathVariable String name, Model model){
-        Animal animal = animalRepository.getAnimal(name);
-        model.addAttribute("name", animal.getName());
-        model.addAttribute("desc", animal.getDescription());
+        AnimalController m = amRepository.findByName(name);
+        model.addAttribute("name", m.getName());
+        model.addAttribute("desc", m.getDescription());
         return "animals";
-
     }
-
-    /*
-    ***code added by alfred***
-    this should allow you to enter a different name in the url
-    and get a different animal and description each time
-     */
-    //@Autowired
-    //private AmRepository amRepository;
-
-//    @RequestMapping("/{name}")
-//    public String getAnimal(@PathVariable String name, Model model){
-//        AnimalController m = amRepository.findByName(name);
-//        model.addAttribute("name", m.getName());
-//        model.addAttribute("desc", m.getDescription());
-//        return "animals";
-//
-//    }
 }

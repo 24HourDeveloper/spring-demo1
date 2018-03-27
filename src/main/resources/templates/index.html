@@ -17,6 +17,7 @@
             padding: 10px;
             display: flex;
             flex-direction: row;
+            flex-wrap: wrap;
             border-radius: 7px;
             text-align: left;
         }
@@ -26,7 +27,7 @@
             background: aqua;
             border-radius: 10px;
             box-shadow: 5px 8px 5px #888888;
-            flex-grow: 1;
+            flex: 1 200px;
         }
 
     </style>
@@ -34,13 +35,9 @@
 <body>
     <h1>Animals</h1>
     <div class="container">
-        <div class="animal">
-            <h3 th:text="${word}">default</h3>
-            <p th:text="${wordd}"></p>
-        </div>
-        <div class="animal">
-            <h3 th:text="${animalName2}">default</h3>
-            <p th:text="${animalDescription2}"></p>
+        <div class="animal" th:each="animal : ${word}">
+            <h3 th:text="${animal.getName()}">default</h3>
+            <p th:text="${animal.getDescription()}">default</p>
         </div>
     </div>
     <h1>You are good</h1>

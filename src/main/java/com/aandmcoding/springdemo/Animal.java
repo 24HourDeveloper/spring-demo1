@@ -1,23 +1,21 @@
 package com.aandmcoding.springdemo;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Animal {
     private String name;
     private String description;
 
-    private List<String> animals = new ArrayList<>();
 
-    public Animal(String name, String description) {
+    Animal(String name, String description) {
         this.name = name;
         this.description = description;
     }
 
-    public Animal(String name, String description, List<String> animals) {
+    public void setName(String name) {
         this.name = name;
+    }
+
+    public void setDescription(String description) {
         this.description = description;
-        this.animals = animals;
     }
 
     public String getName() {
@@ -26,9 +24,5 @@ public class Animal {
 
     public String getDescription() {
         return description;
-    }
-
-    public List<String> getAnimals() {
-        return animals;
     }
 }

@@ -35,9 +35,11 @@
 <body>
     <h1>Animals</h1>
     <div class="container">
-        <div class="animal" th:each="animal : ${word}">
-            <h3 th:text="${animal.getName()}">default</h3>
-            <p th:text="${animal.getDescription()}">default</p>
+        <div class="animal" th:each="animal : ${word}" >
+            <a th:href="@{'/animal/' + ${animal.getName()}}">
+                <h3 th:text="${animal.getName()}">default</h3>
+                <p th:text="${animal.getDescription()}">default</p>
+            </a>
         </div>
     </div>
     <h1>You are good</h1>

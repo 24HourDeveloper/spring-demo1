@@ -19,10 +19,13 @@ public class MainController {
         return "index";
     }
 
-    @RequestMapping("/animal")
-    public String getWords(Model model){
-        //model.addAttribute("word", animal.getName());
-        return "index";
+    @RequestMapping("/animal/{name}")
+    public String getAnimal(@PathVariable String name, Model model){
+        Animal animal = animalRepository.getAnimal(name);
+        model.addAttribute("name", animal.getName());
+        model.addAttribute("desc", animal.getDescription());
+        return "animals";
+
     }
 
     /*
@@ -30,15 +33,15 @@ public class MainController {
     this should allow you to enter a different name in the url
     and get a different animal and description each time
      */
-    @Autowired
-    private AmRepository amRepository;
+    //@Autowired
+    //private AmRepository amRepository;
 
-    @RequestMapping("/{name}")
-    public String getAnimal(@PathVariable String name, Model model){
-        AnimalController m = amRepository.findByName(name);
-        model.addAttribute("name", m.getName());
-        model.addAttribute("desc", m.getDescription());
-        return "animals";
-
-    }
+//    @RequestMapping("/{name}")
+//    public String getAnimal(@PathVariable String name, Model model){
+//        AnimalController m = amRepository.findByName(name);
+//        model.addAttribute("name", m.getName());
+//        model.addAttribute("desc", m.getDescription());
+//        return "animals";
+//
+//    }
 }

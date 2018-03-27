@@ -16,9 +16,11 @@ public class AnimalRepository {
             new Animal("Wolf", "Is a huge dog that runs with a pack.")
     );
 
-    public Animal getAnimal(){
+    public Animal getAnimal(String name){
         for(Animal animals : animal){
-            return animals;
+            if(animals.getName().equals(name)){
+                return animals;
+            }
         }
         return null;
     }

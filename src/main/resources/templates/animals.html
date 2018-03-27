@@ -3,12 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>We love Animals</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}"/>
 </head>
 <body>
 <h1>Animals</h1>
-    <div class="animal">
-        <h3 th:text="${name}">default</h3>
-        <p th:text="${desc}"></p>
+    <div class="container">
+        <div class="animal">
+            <h3 th:text="${name}">default</h3>
+            <p th:text="${desc}"></p>
+        </div>
     </div>
 </body>
 </html>

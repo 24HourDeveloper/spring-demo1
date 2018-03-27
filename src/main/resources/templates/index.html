@@ -3,34 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>We love Animals</title>
-    <style>
-        body{
-            text-align: center;
-            background: #888888;
-            padding-left: 5px;
-            padding-right: 5px;
-            font-family: Ebrima;
-        }
-        .container{
-            margin: auto;
-            background: #fff;
-            padding: 10px;
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            border-radius: 7px;
-            text-align: left;
-        }
-        .animal{
-            margin: 15px;
-            padding: 15px;
-            background: aqua;
-            border-radius: 10px;
-            box-shadow: 5px 8px 5px #888888;
-            flex: 1 200px;
-        }
-
-    </style>
+    <link rel="stylesheet" th:href="@{/css/styles.css}"/>
 </head>
 <body>
     <h1>Animals</h1>
@@ -42,6 +15,5 @@
             </a>
         </div>
     </div>
-    <h1>You are good</h1>
 </body>
 </html>

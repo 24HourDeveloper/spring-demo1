@@ -10,6 +10,7 @@
     <div class="container">
         <div class="animal">
             <h3 th:text="${name}">default</h3>
+            <img class="animal-info" th:src="@{'/css/img/'+ ${desc} + '.jpg'}" >
             <p th:text="${desc}"></p>
         </div>
     </div>

@@ -6,9 +6,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 @Controller
 public class MainController {
@@ -27,5 +30,13 @@ public class MainController {
         model.addAttribute("name", m.getName());
         model.addAttribute("desc", m.getDescription());
         return "animals";
+    }
+
+
+    //This method is used to create a REST Api for the AnimalController
+    @RequestMapping("/api")
+    @ResponseBody
+    public List<AnimalController> grabWord(){
+        return new ArrayList<>((Collection<? extends AnimalController>) amRepository.findAll());
     }
 }

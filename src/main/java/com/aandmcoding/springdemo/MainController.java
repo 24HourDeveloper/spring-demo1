@@ -17,13 +17,13 @@ public class MainController {
 
     @RequestMapping("/")
     public String getWord(Model model){
-        model.addAttribute("word", new ArrayList<AnimalController>((Collection<? extends AnimalController>) amRepository.findAll()));
+        model.addAttribute("word", new ArrayList<Animal>((Collection<? extends Animal>) amRepository.findAll()));
         return "index";
     }
 
     @RequestMapping("/animal/{name}")
     public String getAnimal(@PathVariable String name, Model model){
-        AnimalController m = amRepository.findByName(name);
+        Animal m = amRepository.findByName(name);
         model.addAttribute("name", m.getName());
         model.addAttribute("desc", m.getDescription());
         return "animals";

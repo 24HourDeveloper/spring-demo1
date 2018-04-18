@@ -1,16 +1,14 @@
 package com.aandmcoding.springdemo;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by A on 3/25/2018.
  */
 
 @Entity
-public class AnimalController {
+@Table(name ="animal")
+public class Animal {
     @Id @GeneratedValue
     private long id;
     @Column
@@ -18,9 +16,9 @@ public class AnimalController {
     @Column
     private String description;
 
-    public AnimalController(){}
+    public Animal(){}
 
-    public AnimalController(String name, String description) {
+    public Animal(String name, String description) {
         this.name = name;
         this.description = description;
     }
@@ -51,7 +49,7 @@ public class AnimalController {
 
     @Override
     public String toString() {
-        return "AnimalController{" +
+        return "Animal{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +

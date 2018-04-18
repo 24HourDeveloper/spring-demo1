@@ -20,13 +20,13 @@ public class MainController {
 
     @RequestMapping("/")
     public String getWord(Model model){
-        model.addAttribute("word", new ArrayList<AnimalController>((Collection<? extends AnimalController>) amRepository.findAll()));
+        model.addAttribute("word", new ArrayList<Animal>((Collection<? extends Animal>) amRepository.findAll()));
         return "index";
     }
 
     @RequestMapping("/animal/{name}")
     public String getAnimal(@PathVariable String name, Model model){
-        AnimalController m = amRepository.findByName(name);
+        Animal m = amRepository.findByName(name);
         model.addAttribute("name", m.getName());
         model.addAttribute("desc", m.getDescription());
         return "animals";
@@ -34,8 +34,8 @@ public class MainController {
 
     @RequestMapping("/api/animal/{name}")
     @ResponseBody
-    public AnimalController grabAnimal(@PathVariable String name){
-        AnimalController m = amRepository.findByName(name);
+    public Animal grabAnimal(@PathVariable String name){
+        Animal m = amRepository.findByName(name);
         return m;
     }
 
@@ -43,7 +43,7 @@ public class MainController {
     //This method is used to create a REST Api for the AnimalController
     @RequestMapping("/api")
     @ResponseBody
-    public List<AnimalController> grabWord(){
-        return new ArrayList<>((Collection<? extends AnimalController>) amRepository.findAll());
+    public List<Animal> grabWord(){
+        return new ArrayList<>((Collection<? extends Animal>) amRepository.findAll());
     }
 }

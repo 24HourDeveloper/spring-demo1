@@ -32,6 +32,13 @@ public class MainController {
         return "animals";
     }
 
+    @RequestMapping("/api/animal/{name}")
+    @ResponseBody
+    public AnimalController grabAnimal(@PathVariable String name){
+        AnimalController m = amRepository.findByName(name);
+        return m;
+    }
+
 
     //This method is used to create a REST Api for the AnimalController
     @RequestMapping("/api")

@@ -6,11 +6,15 @@
     <link rel="stylesheet" th:href="@{/css/styles.css}"/>
 </head>
 <body>
-<h1>Animals</h1>
-    <div class="container">
-        <div class="animal">
+<h1><a th:href="@{'/'}"> << Back Home</a></h1>
+    <div class="container-info">
+        <div class="animal clearfix">
             <h3 th:text="${name}">default</h3>
-            <p th:text="${desc}"></p>
+            <img class="animal-info" th:src="@{'/css/img/'+ ${desc} + '.jpg'}" >
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A alias, commodi delectus deleniti,
+                dolore enim esse facilis illo inventore labore magnam minima quasi suscipit tempore, ullam vel
+                voluptatem voluptates. Alias commodi, consequuntur cum deserunt dolor, eaque earum eius est eum
+                fuga ipsam iure iusto labore laboriosam numquam quaerat, quo! Rerum!</p>
         </div>
     </div>
 </body>

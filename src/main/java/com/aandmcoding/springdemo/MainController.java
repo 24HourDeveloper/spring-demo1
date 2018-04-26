@@ -26,6 +26,7 @@ public class MainController {
         Animal m = amRepository.findByName(name);
         model.addAttribute("name", m.getName());
         model.addAttribute("desc", m.getDescription());
+        model.addAttribute("img", m.getImage());
         return "animals";
     }
 }

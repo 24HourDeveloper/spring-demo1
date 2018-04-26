@@ -9,7 +9,7 @@
     <h1>Animals</h1>
     <div class="container">
         <div class="animal" th:each="animal : ${word}" >
-            <img th:src="@{'/css/img/'+ ${animal.getDescription()} + '.jpg'}" >
+            <img th:src="@{'/css/img/'+ ${animal.getImage()} + '.jpg'}" >
             <a th:href="@{'/animal/' + ${animal.getName()}}">
                 <h3 th:text="${animal.getName()}">default</h3>
             </a>

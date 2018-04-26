@@ -15,12 +15,15 @@ public class Animal {
     private String name;
     @Column
     private String description;
+    @Column
+    private String image;
 
     public Animal(){}
 
-    public Animal(String name, String description) {
+    public Animal(String name, String description, String image) {
         this.name = name;
         this.description = description;
+        this.image = image;
     }
 
     public long getId() {
@@ -45,6 +48,14 @@ public class Animal {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     @Override

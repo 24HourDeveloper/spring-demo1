@@ -20,7 +20,7 @@ public class MainController {
 
     @RequestMapping("/")
     public String getWord(Model model){
-        model.addAttribute("word", new ArrayList<Animal>((Collection<? extends Animal>) amRepository.findAll()));
+        model.addAttribute("word", new ArrayList<Animal>(amRepository.findAll()));
         return "index";
     }
 
@@ -44,6 +44,6 @@ public class MainController {
     @RequestMapping("/api")
     @ResponseBody
     public List<Animal> grabWord(){
-        return new ArrayList<>((Collection<? extends Animal>) amRepository.findAll());
+        return new ArrayList<>(amRepository.findAll());
     }
 }

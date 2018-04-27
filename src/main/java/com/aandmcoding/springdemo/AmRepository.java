@@ -1,10 +1,10 @@
 package com.aandmcoding.springdemo;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.mongodb.repository.MongoRepository;
 
 /**
  * Created by A on 3/25/2018.
  */
-public interface AmRepository extends CrudRepository<Animal, Long> {
+public interface AmRepository extends MongoRepository<Animal, String> {
     Animal findByName(String name);
 }

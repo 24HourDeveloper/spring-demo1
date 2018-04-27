@@ -1,19 +1,20 @@
 package com.aandmcoding.springdemo;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import javax.persistence.*;
+
 
 /**
  * Created by A on 3/25/2018.
  */
 
 @Entity
-@Table(name ="animal")
+@Document(collection = "animal")
 public class Animal {
-    @Id @GeneratedValue
-    private long id;
-    @Column
+    @Id
+    private String id;
     private String name;
-    @Column
     private String description;
 
     public Animal(){}
@@ -23,11 +24,11 @@ public class Animal {
         this.description = description;
     }
 
-    public long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Page</title>
+</head>
+<body>
+
+<!-- TODO: add functionality to edit name, description, and image -->
+<h1>Edit Animal Page</h1>
+<form th:action="@{/edit-page}" method="patch" modelAttribute="things">
+    <div class="animal" th:each="animal : ${animals}" >
+        <input type="text" name="name" th:value="${animal.getName()}" />
+        <input type="text" name="description" th:value="${animal.getDescription()}" />
+    </div>
+    <input type="submit" name="submit" value="Save" />
+</form>
+</body>
+</html>

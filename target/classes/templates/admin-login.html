@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Login</title>
+</head>
+<body>
+
+<h1>Admin Login Page</h1>
+
+<div>
+    <form th:action="@{/login}" method="post">
+        Username: <input type="text" name="username" value="" />
+        Password: <input type="password" name="password" value="" />
+        <input type="submit" name="submit" value="Login" />
+    </form>
+</div>
+
+<!-- TODO: add functionality to have password emailed to you
+<div>
+    <a href="forgot-password">Forgot Password</a>
+</div> -->
+</body>
+</html>

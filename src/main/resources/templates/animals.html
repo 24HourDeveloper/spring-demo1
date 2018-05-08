@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>We love Animals</title>
-    <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+    <link rel="stylesheet" th:href="@{/styles.css}"/>
 </head>
 <body>
 <h1><a th:href="@{'/'}"> << Back Home</a></h1>
     <div class="container-info">
         <div class="animal clearfix">
             <h3 th:text="${name}">default</h3>
-            <img class="animal-info" th:src="@{'/css/img/'+ ${img} + '.jpg'}" >
+            <img class="animal-info" th:src="@{${img}}" >
             <p th:text="${desc}"></p>
         </div>
     </div>

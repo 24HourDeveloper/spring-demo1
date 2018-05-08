@@ -24,10 +24,10 @@ public class MainController {
         return "index";
     }
 
-    @RequestMapping("/animal/{name}")
-    public String getAnimal(@PathVariable String name, Model model){
-        Animal m = amRepository.findByName(name);
-        model.addAttribute("name", m.getName());
+    @RequestMapping("/animal/{id}")
+    public String getAnimal(@PathVariable String id, Model model){
+        Animal m = amRepository.findByName(id);
+        model.addAttribute("name", m.getId());
         model.addAttribute("desc", m.getDescription());
         return "animals";
     }

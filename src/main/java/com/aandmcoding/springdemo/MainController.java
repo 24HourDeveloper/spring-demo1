@@ -78,6 +78,7 @@ public class MainController {
     public String addNewAnimal(@RequestParam("name")String name, @RequestParam("description")String description, @RequestParam("image")MultipartFile image){
 
         try{
+            //debug statements
             File path1 = new File("");
             System.out.println("$$$$$$$$$$$$$$$ " + path1.getAbsolutePath() + " $$$$$$$$$$$$$$$");
             String path2 = "\\src\\main\\resources\\static\\";

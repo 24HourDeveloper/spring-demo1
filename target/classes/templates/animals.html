@@ -10,7 +10,7 @@
     <div class="container-info">
         <div class="animal clearfix">
             <h3 th:text="${name}">default</h3>
-            <img class="animal-info" th:src="@{${img}}" >
+            <img class="animal-info" th:src="@{'data:image/jpeg;base64,'+${img}}" >
             <p th:text="${desc}"></p>
         </div>
     </div>

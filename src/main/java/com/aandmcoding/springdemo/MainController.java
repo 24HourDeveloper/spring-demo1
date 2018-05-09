@@ -1,5 +1,6 @@
 package com.aandmcoding.springdemo;
 
+import org.apache.commons.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -7,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.*;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -22,7 +22,20 @@ public class MainController {
 
     @RequestMapping("/")
     public String getWord(Model model){
-        model.addAttribute("word", new ArrayList<Animal>((Collection<? extends Animal>) amRepository.findAll()));
+        List<Animal> animalList = new ArrayList<>();
+        for (Animal a: amRepository.findAll()){
+            Base64 base = new Base64();
+            byte[] encodeBase64 = base.encode(a.getImage());
+            String base64Encoded = null;
+            try {
+                base64Encoded = new String(encodeBase64, "UTF-8");
+                a.setDescription(base64Encoded);
+                animalList.add(a);
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+        }
+        model.addAttribute("word", animalList);
         return "index";
     }
 
@@ -31,7 +44,15 @@ public class MainController {
         Animal m = amRepository.findByName(name);
         model.addAttribute("name", m.getName());
         model.addAttribute("desc", m.getDescription());
-        model.addAttribute("img", m.getImage());
+        Base64 base = new Base64();
+        byte[] encodeBase64 = base.encode(m.getImage());
+        String base64Encoded = null;
+        try {
+            base64Encoded = new String(encodeBase64, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        model.addAttribute("img", base64Encoded );
         return "animals";
     }
 
@@ -76,36 +97,13 @@ public class MainController {
 
     @RequestMapping(value = "/add-new" , method = RequestMethod.POST)
     public String addNewAnimal(@RequestParam("name")String name, @RequestParam("description")String description, @RequestParam("image")MultipartFile image){
-
-        try{
-            //debug statements
-            File path1 = new File("");
-            System.out.println("$$$$$$$$$$$$$$$ " + path1.getAbsolutePath() + " $$$$$$$$$$$$$$$");
-            String path2 = "\\src\\main\\resources\\static\\";
-            String path3 = path1.getAbsolutePath() + path2;
-            System.out.println("$$$$$$$$$$$$$ " + path3 + " $$$$$$$$$$$$$");
-            String filename = image.getOriginalFilename();
-            String directory = "/img";
-            String filepath = Paths.get(directory, filename).toString();
-            System.out.println("$$$$$$$$$$$$$ " + filepath + " $$$$$$$$$$$$$");
-            BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(new File(path3 + filepath)));
-            stream.write(image.getBytes());
-            stream.close();
-            Animal newAnimal = new Animal(name, description, "/img/" + filename);
+        try {
+            byte[] pic = image.getBytes();
+            Animal newAnimal = new Animal(name, description, pic);
             amRepository.save(newAnimal);
-        }catch(Exception e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
-        //BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(new File("C:\\Users\\A\\githubproj\\spring-demo1\\src\\main\\resources\\static" + filepath)));
-//        String path = "/img/" + image.toString();
-//        File file = new File("C:\\Users\\A\\githubproj\\spring-demo1\\src\\main\\resources\\static\\img\\" + image.toString());
-//        try {
-//            file.createNewFile();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        Animal newAnimal = new Animal(name, description, path);
-//        amRepository.save(newAnimal);
         return "admin-page";
     }
 }

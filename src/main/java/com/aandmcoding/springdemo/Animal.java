@@ -15,12 +15,12 @@ public class Animal {
     private String name;
     @Column
     private String description;
-    @Column
-    private String image;
+    @Column @Lob
+    private byte[] image;
 
     public Animal(){}
 
-    public Animal(String name, String description, String image) {
+    public Animal(String name, String description, byte[] image) {
         this.name = name;
         this.description = description;
         this.image = image;
@@ -50,11 +50,11 @@ public class Animal {
         this.description = description;
     }
 
-    public String getImage() {
+    public byte[] getImage() {
         return image;
     }
 
-    public void setImage(String image) {
+    public void setImage(byte[] image) {
         this.image = image;
     }
 

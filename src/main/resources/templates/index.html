@@ -6,8 +6,10 @@
     <link rel="stylesheet" th:href="@{/styles.css}"/>
 </head>
 <body>
-    <h1>Animals</h1>
-    <h1><a th:href="@{'/login'}">Admin Login</a></h1>
+    <div class="banner">
+        <h1>ANIMALS |</h1>
+        <h2><a th:href="@{'/login'}"> Admin Login</a></h2>
+    </div>
     <div class="container">
         <div class="animal" th:each="animal : ${word}" >
             <img th:src="@{'data:image/jpeg;base64,'+${animal.getDescription()}}" >

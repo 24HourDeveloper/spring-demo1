@@ -3,16 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" th:href="@{/styles.css}"/>
 </head>
 <body>
-<h1>Add New Animal</h1>
-
-<div>
+<div class="banner">
+    <h1><a th:href="@{'/'}" class="adminlinks">Home |</a></h1>
+    <h2><a th:href="@{'/login'}" class="adminlinks"> Admin Login</a></h2>
+</div>
+<div class="login">
+    <h1>Add New Animal</h1>
     <form th:action="@{/add-new}" method="post" enctype="multipart/form-data">
         Name: <input type="text" name="name" value="" />
-        Description: <input type="text" name="description" value="" />
-        Image: <input name="image" type="file" value="" />
-        <input type="submit" name="save" value="Save" />
+        Description: <input type="text" name="description" value="" /><br/>
+        <input name="image" type="file" value="" class="button"/>
+        <input type="submit" name="save" value="Save" class="button"/>
     </form>
 </div>
 

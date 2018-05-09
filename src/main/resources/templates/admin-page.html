@@ -3,16 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>Admin Page</title>
+    <link rel="stylesheet" th:href="@{/styles.css}"/>
 </head>
 <body>
+    <div class="banner">
+        <h1><a th:href="@{'/'}" class="adminlinks">Home |</a></h1>
+        <h2><a th:href="@{'/login'}" class="adminlinks"> Admin Login</a></h2>
+    </div>
+    <div class="login" id="select-width">
+        <h1>Select An Option</h1>
+        <!-- TODO: functionality for editing current data
+        <a href="edit-page">Edit Animals</a> -->
 
-<h1>Select An Option</h1>
-
-<!-- TODO: functionality for editing current data
-<a href="edit-page">Edit Animals</a> -->
-
-<a href="add-new">Add Animal</a>
-<a th:href="@{'/'}">Logout</a>
+        <a href="add-new" class="adminlinks">Add Animal</a>|
+        <a th:href="@{'/'}" class="adminlinks">Logout</a>
+    </div>
 
 </body>
 </html>

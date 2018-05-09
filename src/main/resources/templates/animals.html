@@ -6,10 +6,13 @@
     <link rel="stylesheet" th:href="@{/styles.css}"/>
 </head>
 <body>
-<h1><a th:href="@{'/'}"> << Back Home</a></h1>
+<div class="banner">
+    <h1><a th:href="@{'/'}" class="adminlinks">Home |</a></h1>
+    <h2><a th:href="@{'/login'}" class="adminlinks"> Admin Login</a></h2>
+</div>
     <div class="container-info">
         <div class="animal clearfix">
-            <h3 th:text="${name}">default</h3>
+            <h1 th:text="${name}">default</h1>
             <img class="animal-info" th:src="@{'data:image/jpeg;base64,'+${img}}" >
             <p th:text="${desc}"></p>
         </div>

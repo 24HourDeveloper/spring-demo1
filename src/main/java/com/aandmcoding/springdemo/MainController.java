@@ -27,7 +27,7 @@ public class MainController {
     @RequestMapping("/animal/{name}")
     public String getAnimal(@PathVariable String name, Model model){
         Animal m = amRepository.findByName(name);
-        model.addAttribute("name", m.getName());
+        model.addAttribute("name", m.getName()); 
         model.addAttribute("desc", m.getDescription());
         return "animals";
     }
